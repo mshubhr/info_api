@@ -18,69 +18,118 @@ class UserFormScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: FormBuilder(
           key: _formKey,
-          child: Column(
-            children: [
-              FormBuilderTextField(
-                name: 'name',
-                decoration: const InputDecoration(labelText: 'Name'),
-                validator: FormBuilderValidators.required(), // No context here
-              ),
-              FormBuilderTextField(
-                name: 'email',
-                decoration: const InputDecoration(labelText: 'Email'),
-                validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.required(), // No context here
-                  FormBuilderValidators.email(), // No context here
-                ]),
-              ),
-              FormBuilderTextField(
-                name: 'phone',
-                decoration: const InputDecoration(labelText: 'Phone'),
-                validator: FormBuilderValidators.required(), // No context here
-              ),
-              FormBuilderDropdown(
-                name: 'gender',
-                decoration: const InputDecoration(labelText: 'Gender'),
-                items: ['Male', 'Female', 'Other']
-                    .map((gender) => DropdownMenuItem(
-                          value: gender,
-                          child: Text(gender),
-                        ))
-                    .toList(),
-                validator: FormBuilderValidators.required(), // No context here
-              ),
-              FormBuilderTextField(
-                name: 'country',
-                decoration: const InputDecoration(labelText: 'Country'),
-                validator: FormBuilderValidators.required(), // No context here
-              ),
-              FormBuilderTextField(
-                name: 'state',
-                decoration: const InputDecoration(labelText: 'State'),
-                validator: FormBuilderValidators.required(), // No context here
-              ),
-              FormBuilderTextField(
-                name: 'city',
-                decoration: const InputDecoration(labelText: 'City'),
-                validator: FormBuilderValidators.required(), // No context here
-              ),
-              const SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState?.saveAndValidate() ?? false) {
-                    final formData = _formKey.currentState?.value;
-                    if (kDebugMode) {
-                      print(formData);
-                    }
-                  } else {
-                    if (kDebugMode) {
-                      print('Validation failed');
-                    }
-                  }
-                },
-                child: const Text('Submit'),
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 16.0),
+                const Text(
+                  'Personal Information',
+                ),
+                const SizedBox(height: 16.0),
+                FormBuilderTextField(
+                  name: 'name',
+                  decoration: const InputDecoration(
+                    labelText: 'Name',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: FormBuilderValidators.required(
+                      errorText: 'Please enter your name'),
+                ),
+                const SizedBox(height: 16.0),
+                FormBuilderTextField(
+                  name: 'email',
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(
+                        errorText: 'Please enter your email'),
+                    FormBuilderValidators.email(
+                        errorText: 'Please enter a valid email'),
+                  ]),
+                ),
+                const SizedBox(height: 16.0),
+                FormBuilderTextField(
+                  name: 'phone',
+                  decoration: const InputDecoration(
+                    labelText: 'Phone',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: FormBuilderValidators.required(
+                      errorText: 'Please enter your phone number'),
+                ),
+                const SizedBox(height: 16.0),
+                FormBuilderDropdown(
+                  name: 'gender',
+                  decoration: const InputDecoration(
+                    labelText: 'Gender',
+                    border: OutlineInputBorder(),
+                  ),
+                  items: ['Male', 'Female', 'Other']
+                      .map((gender) => DropdownMenuItem(
+                            value: gender,
+                            child: Text(gender),
+                          ))
+                      .toList(),
+                  validator: FormBuilderValidators.required(
+                      errorText: 'Please select your gender'),
+                ),
+                const SizedBox(height: 16.0),
+                const Text(
+                  'Address',
+                ),
+                const SizedBox(height: 16.0),
+                FormBuilderTextField(
+                  name: 'country',
+                  decoration: const InputDecoration(
+                    labelText: 'Country',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: FormBuilderValidators.required(
+                      errorText: 'Please enter your country'),
+                ),
+                const SizedBox(height: 16.0),
+                FormBuilderTextField(
+                  name: 'state',
+                  decoration: const InputDecoration(
+                    labelText: 'State',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: FormBuilderValidators.required(
+                      errorText: 'Please enter your state'),
+                ),
+                const SizedBox(height: 16.0),
+                FormBuilderTextField(
+                  name: 'city',
+                  decoration: const InputDecoration(
+                    labelText: 'City',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: FormBuilderValidators.required(
+                      errorText: 'Please enter your city'),
+                ),
+                const SizedBox(height: 32.0),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState?.saveAndValidate() ?? false) {
+                        final formData = _formKey.currentState?.value;
+                        if (kDebugMode) {
+                          print(formData);
+                        }
+                      } else {
+                        if (kDebugMode) {
+                          print('Validation failed');
+                        }
+                      }
+                    },
+                    child: const Text('Submit'),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

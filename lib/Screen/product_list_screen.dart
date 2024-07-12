@@ -27,19 +27,27 @@ class ProductListScreen extends StatelessWidget {
                 itemCount: state.products.length,
                 itemBuilder: (context, index) {
                   final product = state.products[index];
-                  return ListTile(
-                    title: Text(product.name),
-                    subtitle: Text(product.description),
-                    leading: Image.network(product.imageUrl),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              ProductDetailScreen(product: product),
-                        ),
-                      );
-                    },
+                  return Card(
+                    margin: const EdgeInsets.all(10),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ProductDetailScreen(product: product),
+                          ),
+                        );
+                      },
+                      child: ListTile(
+                        leading: Image.network(product.imageUrl),
+                        title: Text(product.name,
+                            style:
+                                const TextStyle(fontWeight: FontWeight.bold)),
+                        subtitle: Text(product.description),
+                        trailing: const Icon(Icons.arrow_forward_ios),
+                      ),
+                    ),
                   );
                 },
               );

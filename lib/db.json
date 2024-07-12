@@ -4,19 +4,19 @@
             "id": 1,
             "name": "Product 1",
             "description": "This is the description for product 1.",
-            "image_url": "https://via.placeholder.com/150"
+            "image_url": "https://5.imimg.com/data5/SELLER/Default/2023/3/296512301/KC/YS/RW/187114653/yamaha-fz-x-ride-free-bike-1000x1000.jpg"
         },
         {
             "id": 2,
             "name": "Product 2",
             "description": "This is the description for product 2.",
-            "image_url": "https://via.placeholder.com/150"
+            "image_url": "https://fliptoy.in/cdn/shop/products/foldble-26-t-cycle.jpg?v=1698401568&width=713"
         },
         {
             "id": 3,
             "name": "Product 3",
             "description": "This is the description for product 3.",
-            "image_url": "https://via.placeholder.com/150"
+            "image_url": "https://www.quickpantry.in/cdn/shop/products/lay-s-sizzling-hot-potato-chips-31-g-quick-pantry_869x869.jpg?v=1710539205"
         }
     ]
 }
